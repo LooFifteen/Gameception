@@ -12,5 +12,7 @@ public interface WinCondition {
      * @param game The specified game
      * @return If present, the game result. If absent, empty.
      */
+    int getPriority();
+
     Optional<GameResult> getResultOptional(Game game, GamePlayer gamePlayer);
 }

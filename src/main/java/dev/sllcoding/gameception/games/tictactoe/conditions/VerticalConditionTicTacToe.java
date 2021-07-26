@@ -27,4 +27,9 @@ public class VerticalConditionTicTacToe extends TicTacToeWinConditionBase {
             new Entity[] { horizontal1[2], horizontal2[2], horizontal3[2] },
         };
     }
+
+    @Override
+    public int getPriority() {
+        return 2;
+    }
 }

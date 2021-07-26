@@ -10,6 +10,7 @@ import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToePlayer;
 import dev.sllcoding.gameception.games.tictactoe.conditions.DiagonalConditionTicTacToe;
 import dev.sllcoding.gameception.games.tictactoe.conditions.HorizontalConditionTicTacToe;
+import dev.sllcoding.gameception.games.tictactoe.conditions.TieConditionTicTacToe;
 import dev.sllcoding.gameception.games.tictactoe.conditions.VerticalConditionTicTacToe;
 import dev.sllcoding.gameception.games.tictactoe.teams.CircleTeam;
 import dev.sllcoding.gameception.games.tictactoe.teams.CrossTeam;
@@ -45,7 +46,8 @@ public class TicTacToeGameBuilder {
         List<WinCondition> ticTacToeWinConditionBases = Arrays.asList(
             new DiagonalConditionTicTacToe(ticTacToeBoard, gameContainer),
             new HorizontalConditionTicTacToe(ticTacToeBoard, gameContainer),
-            new VerticalConditionTicTacToe(ticTacToeBoard, gameContainer)
+            new VerticalConditionTicTacToe(ticTacToeBoard, gameContainer),
+            new TieConditionTicTacToe(gameContainer)
         );
 
         Team[] progression = new Team[] {

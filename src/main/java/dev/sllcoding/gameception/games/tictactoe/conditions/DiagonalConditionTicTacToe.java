@@ -22,8 +22,13 @@ public class DiagonalConditionTicTacToe extends TicTacToeWinConditionBase {
         Entity[] horizontal3 = boardEntities[2];
 
         return new Entity[][] {
-            new Entity[] { horizontal1[1], horizontal2[1], horizontal3[1] },
-            new Entity[] { horizontal1[2], horizontal2[2], horizontal3[2] }
+            new Entity[] { horizontal1[0], horizontal2[1], horizontal3[2] },
+            new Entity[] { horizontal1[2], horizontal2[1], horizontal3[0] }
         };
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
     }
 }

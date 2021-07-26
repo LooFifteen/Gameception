@@ -64,6 +64,19 @@ public class TicTacToeBoard implements GameBoard {
     }
 
     @Override
+    public boolean allPresent() {
+        for (Entity[] entity : entities) {
+            for (Entity entity1 : entity) {
+                if (!renderedEntities.contains(entity1)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    @Override
     public void place(Entity entity, GamePlayer gamePlayer) {
         if (renderedEntities.contains(entity)) {
             return;

@@ -10,6 +10,7 @@ import net.minestom.server.timer.SchedulerManager;
 import net.minestom.server.timer.TaskBuilder;
 import net.minestom.server.utils.time.TimeUnit;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -27,6 +28,8 @@ public class TicTacToeGame implements Game {
                          List<GamePlayer> gamePlayers,
                          List<WinCondition> winConditions,
                          Team[] turnProgression) {
+        winConditions.sort(Comparator.comparingInt(WinCondition::getPriority));
+
         this.ticTacToeBoard = ticTacToeBoard;
         this.gamePlayers = gamePlayers;
         this.winConditions = winConditions;

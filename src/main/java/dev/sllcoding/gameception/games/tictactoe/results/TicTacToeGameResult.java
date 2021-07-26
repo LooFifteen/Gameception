@@ -4,21 +4,18 @@ import dev.sllcoding.gameception.games.framework.Game;
 import dev.sllcoding.gameception.games.framework.GameContainer;
 import dev.sllcoding.gameception.games.framework.GamePlayer;
 import dev.sllcoding.gameception.games.framework.Team;
-import dev.sllcoding.gameception.games.framework.results.GameResult;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.title.Title;
-import net.minestom.server.entity.Player;
 
 import java.util.List;
 
-public class TicTacToeGameResult implements GameResult {
+public class TicTacToeGameResult extends TicTacToeBaseResult {
     private final Team winningTeam;
-    private final GameContainer gameContainer;
 
     public TicTacToeGameResult(Team winningTeam, GameContainer gameContainer) {
+        super(gameContainer);
         this.winningTeam = winningTeam;
-        this.gameContainer = gameContainer;
     }
 
     @Override
@@ -28,8 +25,7 @@ public class TicTacToeGameResult implements GameResult {
 
     @Override
     public void execute(Game game) {
-        game.end();
-        gameContainer.removeGame(game);
+        super.execute(game);
 
         Team winningTeam = getWinningTeam();
         List<GamePlayer> players = game.getPlayers();
@@ -38,7 +34,7 @@ public class TicTacToeGameResult implements GameResult {
                 Component.text("You won in tic-tac-toe", NamedTextColor.GREEN));
 
         Title lose = Title.title(Component.text("Oopsie doopsie!", NamedTextColor.RED),
-                Component.text("You lost in tic-tac-toe", NamedTextColor.RED));
+                Component.text("You lost in tic-tac-toe. Imagine sucking :(", NamedTextColor.RED));
 
         for (GamePlayer player : players) {
             if (player.getTeam().equals(winningTeam)) {

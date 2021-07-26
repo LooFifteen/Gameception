@@ -2,7 +2,6 @@ package dev.sllcoding.gameception.games.tictactoe.conditions;
 
 import dev.sllcoding.gameception.games.framework.GameBoard;
 import dev.sllcoding.gameception.games.framework.GameContainer;
-import dev.sllcoding.gameception.games.framework.results.GameResult;
 import dev.sllcoding.gameception.games.tictactoe.conditions.base.TicTacToeWinConditionBase;
 import net.minestom.server.entity.Entity;
 
@@ -23,5 +22,10 @@ public class HorizontalConditionTicTacToe extends TicTacToeWinConditionBase {
         Entity[] horizontal3 = boardEntities[2];
 
         return new Entity[][] { horizontal1, horizontal2, horizontal3 };
+    }
+
+    @Override
+    public int getPriority() {
+        return 1;
     }
 }

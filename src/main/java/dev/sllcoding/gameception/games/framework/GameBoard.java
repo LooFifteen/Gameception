@@ -11,5 +11,7 @@ public interface GameBoard {
     void initialize();
     void remove();
 
+    boolean allPresent();
+
     void place(Entity entity, GamePlayer gamePlayer);
 }
