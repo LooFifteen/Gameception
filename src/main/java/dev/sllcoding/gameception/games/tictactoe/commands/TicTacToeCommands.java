@@ -1,6 +1,7 @@
 package dev.sllcoding.gameception.games.tictactoe.commands;
 
 import dev.sllcoding.gameception.games.GameBoardCreator;
+import dev.sllcoding.gameception.games.framework.GameContainer;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeBoard;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToePlayer;
@@ -18,7 +19,7 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.utils.entity.EntityFinder;
 
 public class TicTacToeCommands extends Command {
-    public TicTacToeCommands() {
+    public TicTacToeCommands(GameContainer gameContainer) {
         super("tictactoe");
         setCondition(Conditions::playerOnly);
 
@@ -38,16 +39,22 @@ public class TicTacToeCommands extends Command {
                 return;
             }
 
+            if (gameContainer.isPlayerInGame(player) || gameContainer.isPlayerInGame(target)) {
+                return;
+            }
+
             GameBoardCreator gameBoardCreator = new GameBoardCreator();
             Entity[][] entities = gameBoardCreator.createEntities(3, 3, player.getPosition(), player.getInstance());
 
-            TicTacToeGameBuilder ticTacToeGameBuilder = new TicTacToeGameBuilder()
+            TicTacToeGameBuilder ticTacToeGameBuilder = new TicTacToeGameBuilder(gameContainer)
                     .addPlayer(new TicTacToePlayer(player, new CrossTeam()))
                     .addPlayer(new TicTacToePlayer(target, new CircleTeam()))
                     .withBoard(new TicTacToeBoard(entities));
 
             TicTacToeGame ticTacToeGame = ticTacToeGameBuilder.build();
             ticTacToeGame.start();
+
+            gameContainer.addGame(ticTacToeGame);
 
         }), argumentEntity);
     }

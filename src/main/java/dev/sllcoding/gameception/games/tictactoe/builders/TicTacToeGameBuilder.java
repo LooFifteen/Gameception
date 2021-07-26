@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.builders;
 
+import dev.sllcoding.gameception.games.framework.GameContainer;
 import dev.sllcoding.gameception.games.framework.GameObject;
 import dev.sllcoding.gameception.games.framework.GamePlayer;
 import dev.sllcoding.gameception.games.framework.Team;
@@ -18,10 +19,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TicTacToeGameBuilder {
+    private final GameContainer gameContainer;
+    // TODO: don't create new references of the teams.
+
+
     private TicTacToeBoard ticTacToeBoard;
     private final List<GamePlayer> ticTacToePlayerList;
 
-    public TicTacToeGameBuilder() {
+    public TicTacToeGameBuilder(GameContainer gameContainer) {
+        this.gameContainer = gameContainer;
         this.ticTacToePlayerList = new ArrayList<>();
     }
 
@@ -37,13 +43,9 @@ public class TicTacToeGameBuilder {
 
     public TicTacToeGame build() {
         List<WinCondition> ticTacToeWinConditionBases = Arrays.asList(
-            new DiagonalConditionTicTacToe(ticTacToeBoard),
-            new HorizontalConditionTicTacToe(ticTacToeBoard),
-            new VerticalConditionTicTacToe(ticTacToeBoard)
-        );
-
-        List<GameObject> gameObjects = Arrays.asList(
-
+            new DiagonalConditionTicTacToe(ticTacToeBoard, gameContainer),
+            new HorizontalConditionTicTacToe(ticTacToeBoard, gameContainer),
+            new VerticalConditionTicTacToe(ticTacToeBoard, gameContainer)
         );
 
         Team[] progression = new Team[] {
@@ -54,7 +56,6 @@ public class TicTacToeGameBuilder {
         return new TicTacToeGame(ticTacToeBoard,
                 ticTacToePlayerList,
                 ticTacToeWinConditionBases,
-                gameObjects,
                 progression);
     }
 }

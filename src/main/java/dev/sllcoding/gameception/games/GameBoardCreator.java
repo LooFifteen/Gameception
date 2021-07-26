@@ -17,13 +17,13 @@ public class GameBoardCreator {
         Entity[][] entities = new Entity[rows][columns];
 
         for (int i = 0; i < rows * columns; i++) {
-            if (i > 0 && i % columns == 0) {
+            if (i > 0 && i % rows == 0) {
                 row++;
                 j = 0;
             }
 
             ItemStack map = createMap();
-            Pos newPosition = position.withYaw(position.yaw() + 180);
+            Pos newPosition = position.add(j, row, 0).withYaw(position.yaw() + 180);
             Entity itemFrame = createItemFrame(instance, newPosition, map);
             entities[row][j] = itemFrame;
 

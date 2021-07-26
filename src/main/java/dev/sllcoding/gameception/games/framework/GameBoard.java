@@ -7,5 +7,9 @@ import java.util.Map;
 public interface GameBoard {
     Map<Entity, Team> getEntityMap();
     Entity[][] getBoardEntities();
-    void place(Entity entity, GameObject gameObject);
+
+    void initialize();
+    void remove();
+
+    void place(Entity entity, GamePlayer gamePlayer);
 }

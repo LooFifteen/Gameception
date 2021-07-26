@@ -1,9 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.conditions.base;
 
-import dev.sllcoding.gameception.games.framework.Game;
-import dev.sllcoding.gameception.games.framework.GameBoard;
-import dev.sllcoding.gameception.games.framework.GamePlayer;
-import dev.sllcoding.gameception.games.framework.Team;
+import dev.sllcoding.gameception.games.framework.*;
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
 import dev.sllcoding.gameception.games.framework.results.GameResult;
 import dev.sllcoding.gameception.games.tictactoe.results.TicTacToeGameResult;
@@ -14,6 +11,12 @@ import java.util.Map;
 import java.util.Optional;
 
 public abstract class TicTacToeWinConditionBase implements WinCondition {
+    private final GameContainer gameContainer;
+
+    public TicTacToeWinConditionBase(GameContainer gameContainer) {
+        this.gameContainer = gameContainer;
+    }
+
     public abstract Entity[][] getEntities();
 
     @Override
@@ -30,7 +33,8 @@ public abstract class TicTacToeWinConditionBase implements WinCondition {
             });
 
             if (allEntitiesMatch) {
-                return Optional.of(new TicTacToeGameResult(gamePlayer.getTeam()));
+                TicTacToeGameResult gameResult = new TicTacToeGameResult(gamePlayer.getTeam(), gameContainer);
+                return Optional.of(gameResult);
             }
         }
 
