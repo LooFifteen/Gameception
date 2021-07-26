@@ -36,7 +36,13 @@
         <dependency>
             <groupId>com.github.Minestom</groupId>
             <artifactId>Minestom</artifactId>
-            <version>new-block-api-SNAPSHOT</version>
+            <version>25d645a</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.shrinkwrap.resolver</groupId>
+                    <artifactId>shrinkwrap-resolver-depchain</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.christian162</groupId>
