@@ -20,4 +20,8 @@ public class TicTacToeGameContainer {
     public Optional<TicTacToeGame> getOngoingGame(Player player) {
         return onGoingGames.stream().filter(ticTacToeGame -> ticTacToeGame.fromPlayer(player) != null).findFirst();
     }
+
+    public void removeGame(TicTacToeGame ticTacToeGame) {
+        onGoingGames.remove(ticTacToeGame);
+    }
 }

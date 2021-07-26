@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe;
 
+import net.kyori.adventure.text.Component;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
@@ -15,7 +16,14 @@ import net.minestom.server.utils.PacketUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.function.Consumer;
+
+// TODO: Don't override entity with existing X or O mark
+// TODO: After every move, check for a victory.
+// TODO: If the player leaves while game is active, the game ends.
 
 public class TicTacToeGame {
     private TicTacToeTeam currentTurn = TicTacToeTeam.X;
@@ -24,6 +32,9 @@ public class TicTacToeGame {
     private final TicTacToePlayer player2;
 
     private TicTacToeBoard ticTacToeBoard;
+
+    private boolean isGameOver = false;
+    private Consumer<TicTacToeGame> gameOverCallback;
 
     public TicTacToeGame(Player firstPlayer, Player secondPlayer) {
         this.player1 = new TicTacToePlayer(firstPlayer, TicTacToeTeam.X);
@@ -36,7 +47,7 @@ public class TicTacToeGame {
     }
 
     public TicTacToePlayer fromPlayer(Player player) {
-        return player1.player().equals(player) ? player1 : (player2.player().equals(player) ? player2 : null);
+        return player1.player().getUuid().equals(player.getUuid()) ? player1 : (player2.player().getUuid().equals(player.getUuid()) ? player2 : null);
     }
 
     public void setTicTacToeBoard(TicTacToeBoard ticTacToeBoard) {
@@ -48,7 +59,16 @@ public class TicTacToeGame {
     }
 
     public void doTurn(Player player, Entity entity) {
+        if (isGameOver) {
+            return;
+        }
+
+        if (ticTacToeBoard.isEntityMarked(entity)) {
+            return;
+        }
+
         if (!ticTacToeBoard.isEntityApartOfBoard(entity)) {
+            player.sendMessage(Component.text("wowowowowowow"));
             return;
         }
 
@@ -88,7 +108,51 @@ public class TicTacToeGame {
             }
         });
 
+        ticTacToeBoard.addMarkedEntity(entity, currentTurn);
+
+        if (ticTacToeBoard.didTeamWin(currentTurn)) {
+            // TODO: center text
+            clearAndDraw(String.format("%s HAS WON", player.getUsername()));
+            isGameOver = true;
+            gameOverCallback.accept(this);
+        } else if (ticTacToeBoard.isTie()) {
+            clearAndDraw("TIE!");
+            gameOverCallback.accept(this);
+        }
+
         currentTurn = ticTacToePlayer.ticTacToeTeam() == TicTacToeTeam.O ? TicTacToeTeam.X : TicTacToeTeam.O;
+    }
+
+    public void setGameOverCallback(Consumer<TicTacToeGame> gameOverCallback) {
+        this.gameOverCallback = gameOverCallback;
+    }
+
+    private void clearAndDraw(String text) {
+        Entity boardPart = ticTacToeBoard.getBoardPart(1, 1);
+        ItemFrameMeta boardPartMeta = (ItemFrameMeta) boardPart.getEntityMeta();
+        ItemStack boardStack = boardPartMeta.getItem();
+
+        clearBoard();
+
+        applyToMap(boardStack, graphics2D -> {
+            graphics2D.drawString(text, 64 - text.length(), 64);
+        });
+    }
+
+    private void clearBoard() {
+        Entity[][] entities = ticTacToeBoard.getEntities();
+
+        for (Entity[] entity : entities) {
+            for (Entity entity1 : entity) {
+                ItemFrameMeta boardPartMeta = (ItemFrameMeta) entity1.getEntityMeta();
+                ItemStack boardStack = boardPartMeta.getItem();
+
+                applyToMap(boardStack, graphics2D -> {
+                    graphics2D.setColor(Color.BLACK);
+                    graphics2D.fillRect(0, 0, 128, 128);
+                });
+            }
+        }
     }
 
     public void applyToMap(ItemStack map, Consumer<Graphics2D> consumer) {
@@ -112,8 +176,11 @@ public class TicTacToeGame {
 
     public void drawX(int x, int y, Graphics2D graphics2D) {
         drawEmptyRect(graphics2D);
-        graphics2D.drawLine(x - 10, y - 10, x + 10, y + 10);
-        graphics2D.drawLine(x - 10, y + 10, x + 10, y - 10);
+
+        int length = 30;
+
+        graphics2D.drawLine(x - length, y - length, x + length, y + length);
+        graphics2D.drawLine(x - length, y + length, x + length, y - length);
     }
 
     public void drawCircle(int x, int y, Graphics2D graphics2D) {

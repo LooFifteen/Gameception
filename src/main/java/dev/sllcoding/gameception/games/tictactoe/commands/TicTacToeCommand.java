@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.commands;
 
+import dev.sllcoding.gameception.games.tictactoe.TicTacToeBoard;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeGameContainer;
 import net.kyori.adventure.text.Component;
@@ -22,8 +23,10 @@ import net.minestom.server.map.framebuffers.Graphics2DFramebuffer;
 import net.minestom.server.network.packet.server.play.MapDataPacket;
 import net.minestom.server.utils.PacketUtils;
 import net.minestom.server.utils.entity.EntityFinder;
+import net.minestom.server.utils.time.TimeUnit;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TicTacToeCommand extends Command {
@@ -59,11 +62,11 @@ public class TicTacToeCommand extends Command {
                 }
 
                 TicTacToeGame ticTacToeGame = new TicTacToeGame(sender, otherPlayer);
-                ticTacToeGameContainer.addGame(ticTacToeGame);
 
-                int row = 0;
+                int row = 0, j = 0;
+                Entity[][] entities = new Entity[3][3];
 
-                for (int i = 0, j = 0; i < 9; i++) {
+                for (int i = 0; i < 9; i++) {
                     if (i > 0 && i % 3 == 0) {
                         row++;
                         j = 0;
@@ -73,9 +76,26 @@ public class TicTacToeCommand extends Command {
 
                     Pos position = sender.getPosition();
                     Pos newPosition = position.add(j, row, 0).withYaw(position.yaw() + 180);
-                    createItemFrame(sender.getInstance(), newPosition, map);
+
+                    Entity itemFrame = createItemFrame(sender.getInstance(), newPosition, map);
+                    entities[row][j] = itemFrame;
+
                     j++;
                 }
+
+                TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(entities);
+                ticTacToeGame.setTicTacToeBoard(ticTacToeBoard);
+
+                ticTacToeGame.setGameOverCallback(game -> {
+
+                    MinecraftServer.getSchedulerManager().buildTask(() -> {
+                        game.getTicTacToeBoard().delete();
+                        ticTacToeGameContainer.removeGame(game);
+                    }).delay(5, TimeUnit.SECOND).schedule();
+
+                });
+
+                ticTacToeGameContainer.addGame(ticTacToeGame);
             }
         }), player);
     }
