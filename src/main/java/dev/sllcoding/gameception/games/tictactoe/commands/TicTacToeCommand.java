@@ -37,6 +37,11 @@ public class TicTacToeCommand extends Command {
             EntityFinder entityFinder = commandContext.get(argumentEntity);
             Integer integer = commandContext.get(rows);
 
+            if (integer <= 0) {
+                player.sendMessage(Component.text("Hey..... wtf?", NamedTextColor.GRAY));
+                return;
+            }
+
             Entity firstEntity = entityFinder.findFirstEntity(commandSender);
 
             if (!(firstEntity instanceof Player target)) {

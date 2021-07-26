@@ -23,7 +23,7 @@ public class VerticalConditionTicTacToe extends TicTacToeWinConditionBase {
 
         int column = 0;
 
-        while (column < boardEntities.length) {
+        for (int i = 0; i < boardEntities.length; i++) {
             List<Entity> entityList = new ArrayList<>();
 
             for (Entity[] boardEntity : boardEntities) {
@@ -31,7 +31,6 @@ public class VerticalConditionTicTacToe extends TicTacToeWinConditionBase {
             }
 
             entities.add(entityList.toArray(new Entity[0]));
-            column++;
         }
 
         return entities.toArray(Entity[][]::new);

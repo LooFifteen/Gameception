@@ -20,7 +20,7 @@ public class GameBoardCreator {
 
         while (currentRow < rows) {
             ItemStack map = createMap();
-            Pos newPosition = position.add(currentColumn, currentRow, 0).withYaw(position.yaw() + 180);
+            Pos newPosition = position.add(currentColumn, 0, currentRow).withYaw(180).withPitch(90);
             Entity itemFrame = createItemFrame(instance, newPosition, map);
             entities[currentRow][currentColumn] = itemFrame;
 
@@ -40,7 +40,7 @@ public class GameBoardCreator {
         ItemFrameMeta entityMeta = (ItemFrameMeta) entity.getEntityMeta();
 
         entityMeta.setNotifyAboutChanges(false);
-        entityMeta.setOrientation(ItemFrameMeta.Orientation.NORTH);
+        entityMeta.setOrientation(ItemFrameMeta.Orientation.UP);
         entityMeta.setItem(map);
         entityMeta.setNotifyAboutChanges(true);
 

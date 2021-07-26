@@ -27,15 +27,8 @@ public class DiagonalConditionTicTacToe extends TicTacToeWinConditionBase {
             entityList.add(boardEntities[i][i]);
         }
 
-
-        int currentColumn = boardEntities.length - 1;
-        int currentRow = 0;
-
-        while (currentColumn >= 0 && currentRow < boardEntities.length) {
+        for (int currentColumn = boardEntities.length - 1, currentRow = 0; currentColumn >= 0 && currentRow < boardEntities.length; currentColumn--, currentRow++) {
             entityList1.add(boardEntities[currentRow][currentColumn]);
-
-            currentColumn--;
-            currentRow++;
         }
 
         return new Entity[][] { entityList.toArray(new Entity[0]), entityList1.toArray(new Entity[0]) };
