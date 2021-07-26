@@ -1,7 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.objects;
 
 import dev.sllcoding.gameception.games.framework.GameObject;
-import net.minestom.server.entity.Entity;
 
 import java.awt.*;
 

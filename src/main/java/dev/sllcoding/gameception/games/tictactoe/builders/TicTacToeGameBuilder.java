@@ -1,7 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.builders;
 
 import dev.sllcoding.gameception.games.framework.GameContainer;
-import dev.sllcoding.gameception.games.framework.GameObject;
 import dev.sllcoding.gameception.games.framework.GamePlayer;
 import dev.sllcoding.gameception.games.framework.Team;
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;

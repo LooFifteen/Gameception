@@ -7,10 +7,7 @@ import dev.sllcoding.gameception.games.framework.GamePlayer;
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
 import dev.sllcoding.gameception.games.framework.results.GameResult;
 import dev.sllcoding.gameception.games.tictactoe.results.TicTacToeTieResult;
-import net.minestom.server.entity.Entity;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 
 public class TieConditionTicTacToe implements WinCondition {

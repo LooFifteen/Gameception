@@ -1,6 +1,9 @@
 package dev.sllcoding.gameception.games.tictactoe;
 
-import dev.sllcoding.gameception.games.framework.*;
+import dev.sllcoding.gameception.games.framework.Game;
+import dev.sllcoding.gameception.games.framework.GameBoard;
+import dev.sllcoding.gameception.games.framework.GamePlayer;
+import dev.sllcoding.gameception.games.framework.Team;
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
 import dev.sllcoding.gameception.games.framework.results.GameResult;
 import net.minestom.server.MinecraftServer;

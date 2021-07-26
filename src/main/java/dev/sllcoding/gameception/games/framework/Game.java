@@ -1,7 +1,6 @@
 package dev.sllcoding.gameception.games.framework;
 
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
-import dev.sllcoding.gameception.games.framework.results.GameResult;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.Player;
 
