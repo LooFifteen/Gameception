@@ -2,6 +2,8 @@ package dev.sllcoding.gameception.server;
 
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
+import dev.sllcoding.gameception.games.minesweeper.commands.MinesweeperCommand;
+import dev.sllcoding.gameception.games.minesweeper.listeners.MinesweeperListener;
 import dev.sllcoding.gameception.server.commands.gameception.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
@@ -62,6 +64,7 @@ public class GameceptionServer {
 
     private void registerListeners() {
         eventAPI.register(new ServerListener());
+        eventAPI.register(new MinesweeperListener());
         //eventAPI.register(new TicTacToeListener(gameContainer));
         //eventAPI.register(new TicTacToeListener(ticTacToeGameContainer));
 //        eventAPI.register(new GameListener());
@@ -70,6 +73,7 @@ public class GameceptionServer {
     private void registerCommands() {
         CommandManager commandManager = MinecraftServer.getCommandManager();
         commandManager.register(new GameceptionCommand());
+        commandManager.register(new MinesweeperCommand());
         //commandManager.register(new TicTacToeCommand(gameContainer));
     }
 

@@ -5,6 +5,7 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.metadata.other.ItemFrameMeta;
 import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
 import net.minestom.server.item.metadata.MapMeta;
 import net.minestom.server.map.framebuffers.Graphics2DFramebuffer;
 import net.minestom.server.network.packet.server.play.MapDataPacket;
@@ -35,5 +36,15 @@ public abstract class AbstractTileEntity extends Entity {
         }
     }
 
-    abstract void initialize();
+    public void addBlankMap(int mapId) {
+        ItemStack map = ItemStack.of(Material.FILLED_MAP).withMeta(MapMeta.class, meta -> {
+            meta.mapId(mapId);
+        });
+
+        ItemFrameMeta entityMeta = (ItemFrameMeta) getEntityMeta();
+        entityMeta.setItem(map);
+    }
+
+    public abstract void initialize();
+    public abstract void update();
 }
