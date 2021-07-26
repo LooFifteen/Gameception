@@ -1,5 +1,6 @@
-package dev.sllcoding.gameception.server.commands;
+package dev.sllcoding.gameception.server.commands.gameception;
 
+import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.builder.Command;
@@ -11,10 +12,12 @@ public class GameceptionCommand extends Command {
         super("gameception");
 
         setDefaultExecutor(this::defaultExecutor);
+        addSubcommand(new GamesCommand());
     }
 
     private void defaultExecutor(CommandSender sender, CommandContext context) {
-        sender.sendMessage(MiniMessage.get().parse("<gradient:#ff6c32:#ff76b6>this command does absolutely nothing.</gradient>"));
+        sender.sendMessage(MiniMessage.get().parse("<gradient:#ff6c32:#ff76b6>https://github.com/SLLCoding/Gameception</gradient>")
+                .clickEvent(ClickEvent.openUrl("https://github.com/SLLCoding/Gameception")));
     }
 
 }
