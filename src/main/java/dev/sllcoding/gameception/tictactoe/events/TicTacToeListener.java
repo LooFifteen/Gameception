@@ -1,12 +1,11 @@
-package dev.sllcoding.gameception.games.tictactoe.events;
+package dev.sllcoding.gameception.tictactoe.events;
 
 import com.github.christian162.annotations.Filter;
 import com.github.christian162.annotations.Listen;
 import com.github.christian162.annotations.Node;
 import com.github.christian162.interfaces.Listener;
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeGameContainer;
-import net.kyori.adventure.text.Component;
+import dev.sllcoding.gameception.tictactoe.TicTacToeGame;
+import dev.sllcoding.gameception.tictactoe.TicTacToeGameContainer;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.player.PlayerEntityInteractEvent;

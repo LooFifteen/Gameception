@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.tictactoe;
+package dev.sllcoding.gameception.tictactoe;
 
 import net.minestom.server.entity.Player;
 

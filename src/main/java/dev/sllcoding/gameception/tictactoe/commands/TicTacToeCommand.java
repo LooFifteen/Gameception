@@ -1,8 +1,8 @@
-package dev.sllcoding.gameception.games.tictactoe.commands;
+package dev.sllcoding.gameception.tictactoe.commands;
 
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeBoard;
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeGameContainer;
+import dev.sllcoding.gameception.tictactoe.TicTacToeBoard;
+import dev.sllcoding.gameception.tictactoe.TicTacToeGame;
+import dev.sllcoding.gameception.tictactoe.TicTacToeGameContainer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
@@ -19,14 +19,9 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.minestom.server.item.metadata.MapMeta;
-import net.minestom.server.map.framebuffers.Graphics2DFramebuffer;
-import net.minestom.server.network.packet.server.play.MapDataPacket;
-import net.minestom.server.utils.PacketUtils;
 import net.minestom.server.utils.entity.EntityFinder;
 import net.minestom.server.utils.time.TimeUnit;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TicTacToeCommand extends Command {

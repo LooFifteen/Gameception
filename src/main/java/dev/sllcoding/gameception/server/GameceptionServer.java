@@ -2,12 +2,11 @@ package dev.sllcoding.gameception.server;
 
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
-import dev.sllcoding.gameception.games.tictactoe.TicTacToeGameContainer;
-import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommand;
-import dev.sllcoding.gameception.games.tictactoe.events.TicTacToeListener;
+import dev.sllcoding.gameception.tictactoe.TicTacToeGameContainer;
+import dev.sllcoding.gameception.tictactoe.commands.TicTacToeCommand;
+import dev.sllcoding.gameception.tictactoe.events.TicTacToeListener;
 import dev.sllcoding.gameception.server.commands.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
-import dev.sllcoding.gameception.server.listeners.GameListener;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;
