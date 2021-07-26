@@ -2,6 +2,7 @@ package dev.sllcoding.gameception.server;
 
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
+import dev.sllcoding.gameception.server.commands.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
 import net.minestom.server.MinecraftServer;
@@ -45,6 +46,7 @@ public class GameceptionServer {
 
         // FINAL INITIALISATION
         registerListeners();
+        registerCommands();
     }
 
     public void postInit(String[] args) {
@@ -53,6 +55,10 @@ public class GameceptionServer {
 
     private void registerListeners() {
         eventAPI.register(new ServerListener());
+    }
+
+    private void registerCommands() {
+        MinecraftServer.getCommandManager().register(new GameceptionCommand());
     }
 
     public InstanceContainer getMainInstance() {
