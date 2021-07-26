@@ -20,14 +20,12 @@ public class VerticalConditionTicTacToe extends TicTacToeWinConditionBase {
     public Entity[][] getEntities() {
         Entity[][] boardEntities = gameBoard.getBoardEntities();
         List<Entity[]> entities = new ArrayList<>();
-
-        int column = 0;
-
+        
         for (int i = 0; i < boardEntities.length; i++) {
             List<Entity> entityList = new ArrayList<>();
 
             for (Entity[] boardEntity : boardEntities) {
-                entityList.add(boardEntity[column]);
+                entityList.add(boardEntity[i]);
             }
 
             entities.add(entityList.toArray(new Entity[0]));
