@@ -1,5 +1,7 @@
 package dev.sllcoding.gameception.games;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Game {
@@ -23,7 +25,20 @@ public abstract class Game {
         return state;
     }
 
+    /**
+     * Do not use this, use {@link GamePlayer#setCurrentGame(Game)}.
+     * @param player player
+     * @return whether player was added.
+     */
+    @ApiStatus.Internal
     public abstract boolean addPlayer(GamePlayer player);
+
+    /**
+     * Do not use this, use {@link GamePlayer#leaveCurrentGame()}
+     * @param player player
+     * @return whether the player was removed.
+     */
+    @ApiStatus.Internal
     public abstract boolean removePlayer(GamePlayer player);
 
 }
