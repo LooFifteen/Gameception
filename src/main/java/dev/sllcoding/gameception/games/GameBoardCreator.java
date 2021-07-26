@@ -47,7 +47,7 @@ public class GameBoardCreator {
     }
 
     private ItemStack createMap() {
-        int randomMapId = ThreadLocalRandom.current().nextInt(100);
+        int randomMapId = ThreadLocalRandom.current().nextInt(10000);
 
         return ItemStack.of(Material.FILLED_MAP).withMeta(MapMeta.class, mapMeta -> {
             mapMeta.mapId(randomMapId);

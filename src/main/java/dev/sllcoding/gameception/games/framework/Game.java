@@ -17,9 +17,10 @@ public interface Game {
 
     void start();
     void end();
-    void update(Entity entity);
+    void update(Entity entity, Player player);
 
     Optional<GamePlayer> getPlayer(UUID identifier);
+    List<GamePlayer> getPlayersOnTeam(Team team);
 
     Team getCurrentTurn();
 }

@@ -56,6 +56,6 @@ public class TicTacToeListener implements Listener {
             return;
         }
 
-        game.update(entity);
+        game.update(entity, player);
     }
 }
