@@ -23,7 +23,7 @@ public abstract class Game {
         return state;
     }
 
-    public abstract void addPlayer(GamePlayer player);
-    public abstract void removePlayer(GamePlayer player);
+    public abstract boolean addPlayer(GamePlayer player);
+    public abstract boolean removePlayer(GamePlayer player);
 
 }
