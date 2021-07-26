@@ -27,6 +27,7 @@ public class GamePlayer {
 
     private final Player player;
     private final Map<Integer, Graphics2D> maps = new HashMap<>();
+    private Game currentGame = null;
 
     private GamePlayer(Player player) {
         this.player = player;
@@ -63,6 +64,14 @@ public class GamePlayer {
         fb.preparePacket(map);
         player.getPlayerConnection().sendPacket(map);
         maps.remove(id);
+    }
+
+    public void setCurrentGame(Game currentGame) {
+        this.currentGame = currentGame;
+    }
+
+    public Game getCurrentGame() {
+        return currentGame;
     }
 
 }
