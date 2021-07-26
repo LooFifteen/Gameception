@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework.v2.endings;
+package dev.sllcoding.gameception.games.framework.endings;
 
 import net.kyori.adventure.title.Title;
 

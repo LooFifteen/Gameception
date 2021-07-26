@@ -1,7 +1,7 @@
-package dev.sllcoding.gameception.games.framework.v2.multiplayer;
+package dev.sllcoding.gameception.games.framework.multiplayer;
 
-import dev.sllcoding.gameception.games.framework.v2.AbstractGamePlayer;
-import dev.sllcoding.gameception.games.framework.v2.Game;
+import dev.sllcoding.gameception.games.framework.AbstractGamePlayer;
+import dev.sllcoding.gameception.games.framework.Game;
 
 import java.util.List;
 

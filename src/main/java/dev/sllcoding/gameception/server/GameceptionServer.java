@@ -2,9 +2,6 @@ package dev.sllcoding.gameception.server;
 
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
-import dev.sllcoding.gameception.games.framework.v1.GameContainer;
-import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommand;
-import dev.sllcoding.gameception.games.tictactoe.listeners.TicTacToeListener;
 import dev.sllcoding.gameception.server.commands.gameception.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
@@ -23,7 +20,7 @@ public class GameceptionServer {
     }
 
 
-    private GameContainer gameContainer;
+    //private GameContainer gameContainer;
 
     private InstanceContainer instance;
     private EventAPI eventAPI;
@@ -33,7 +30,7 @@ public class GameceptionServer {
         // no u
         INSTANCE = this;
 
-        gameContainer = new GameContainer();
+        //gameContainer = new GameContainer();
 
 
         // ENABLE SETTINGS
@@ -65,7 +62,7 @@ public class GameceptionServer {
 
     private void registerListeners() {
         eventAPI.register(new ServerListener());
-        eventAPI.register(new TicTacToeListener(gameContainer));
+        //eventAPI.register(new TicTacToeListener(gameContainer));
         //eventAPI.register(new TicTacToeListener(ticTacToeGameContainer));
 //        eventAPI.register(new GameListener());
     }
@@ -73,7 +70,7 @@ public class GameceptionServer {
     private void registerCommands() {
         CommandManager commandManager = MinecraftServer.getCommandManager();
         commandManager.register(new GameceptionCommand());
-        commandManager.register(new TicTacToeCommand(gameContainer));
+        //commandManager.register(new TicTacToeCommand(gameContainer));
     }
 
     public InstanceContainer getMainInstance() {

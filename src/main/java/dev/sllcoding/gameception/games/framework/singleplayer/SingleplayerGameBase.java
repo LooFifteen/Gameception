@@ -1,7 +1,7 @@
-package dev.sllcoding.gameception.games.framework.v2.singleplayer;
+package dev.sllcoding.gameception.games.framework.singleplayer;
 
-import dev.sllcoding.gameception.games.framework.v2.AbstractGamePlayer;
-import dev.sllcoding.gameception.games.framework.v2.Game;
+import dev.sllcoding.gameception.games.framework.AbstractGamePlayer;
+import dev.sllcoding.gameception.games.framework.Game;
 
 public abstract class SingleplayerGameBase implements Game {
     abstract AbstractGamePlayer getPlayer();

@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework.v2;
+package dev.sllcoding.gameception.games.framework;
 
 import net.minestom.server.entity.Player;
 import net.minestom.server.network.player.PlayerConnection;

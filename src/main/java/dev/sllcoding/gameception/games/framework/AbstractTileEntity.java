@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework.v2;
+package dev.sllcoding.gameception.games.framework;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Entity;
