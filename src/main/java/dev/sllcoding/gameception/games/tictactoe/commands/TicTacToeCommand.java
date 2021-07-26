@@ -37,7 +37,7 @@ public class TicTacToeCommand extends Command {
             EntityFinder entityFinder = commandContext.get(argumentEntity);
             Integer integer = commandContext.get(rows);
 
-            if (integer <= 0) {
+            if (integer < 3 || integer > 10) {
                 player.sendMessage(Component.text("Hey..... wtf?", NamedTextColor.GRAY));
                 return;
             }
