@@ -18,8 +18,8 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.Player;
 import net.minestom.server.utils.entity.EntityFinder;
 
-public class TicTacToeCommands extends Command {
-    public TicTacToeCommands(GameContainer gameContainer) {
+public class TicTacToeCommand extends Command {
+    public TicTacToeCommand(GameContainer gameContainer) {
         super("tictactoe");
         setCondition(Conditions::playerOnly);
 
@@ -39,11 +39,17 @@ public class TicTacToeCommands extends Command {
                 return;
             }
 
+            if (player.equals(target)) {
+                player.sendMessage(Component.text("Hey..... wtf?", NamedTextColor.GRAY));
+                return;
+            }
+
             if (gameContainer.isPlayerInGame(player) || gameContainer.isPlayerInGame(target)) {
                 return;
             }
 
             GameBoardCreator gameBoardCreator = new GameBoardCreator();
+
             Entity[][] entities = gameBoardCreator.createEntities(3, 3, player.getPosition(), player.getInstance());
 
             TicTacToeGameBuilder ticTacToeGameBuilder = new TicTacToeGameBuilder(gameContainer)

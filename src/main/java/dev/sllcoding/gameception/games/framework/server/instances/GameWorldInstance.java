@@ -13,6 +13,7 @@ import java.util.UUID;
 
 public class GameWorldInstance extends InstanceContainer {
 
+    private static GameWorldInstance gameWorldInstance;
     private static final DimensionType GAME_WORLD_DIMENSION = DimensionType.builder(NamespaceID.from("gameception", "luis_was_here")).fixedTime(18000L).ambientLight(15).build();
 
     static { // yes i wrote this, yes i dont care
@@ -20,9 +21,13 @@ public class GameWorldInstance extends InstanceContainer {
     }
 
     public static GameWorldInstance newGameWorld() {
+        if (gameWorldInstance != null) {
+            return gameWorldInstance;
+        }
+
         GameWorldInstance instance = new GameWorldInstance();
         MinecraftServer.getInstanceManager().registerInstance(instance);
-        return instance;
+        return gameWorldInstance = instance;
     }
 
     private GameWorldInstance() {
