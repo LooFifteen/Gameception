@@ -1,9 +1,9 @@
-package dev.sllcoding.gameception.server.listeners;
+package dev.sllcoding.gameception.games.framework.server.listeners;
 
 import com.github.christian162.annotations.Listen;
 import com.github.christian162.annotations.Node;
 import com.github.christian162.interfaces.Listener;
-import dev.sllcoding.gameception.server.GameceptionServer;
+import dev.sllcoding.gameception.games.framework.server.GameceptionServer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.coordinate.Pos;

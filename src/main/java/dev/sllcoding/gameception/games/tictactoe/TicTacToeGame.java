@@ -3,15 +3,8 @@ package dev.sllcoding.gameception.games.tictactoe;
 import dev.sllcoding.gameception.games.framework.*;
 import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
 import dev.sllcoding.gameception.games.framework.results.GameResult;
-import dev.sllcoding.gameception.games.tictactoe.conditions.DiagonalConditionTicTacToe;
-import dev.sllcoding.gameception.games.tictactoe.conditions.HorizontalConditionTicTacToe;
-import dev.sllcoding.gameception.games.tictactoe.conditions.VerticalConditionTicTacToe;
-import dev.sllcoding.gameception.games.tictactoe.teams.CircleTeam;
-import dev.sllcoding.gameception.games.tictactoe.teams.CrossTeam;
 import net.minestom.server.entity.Entity;
-import net.minestom.server.entity.Player;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,28 +12,21 @@ public class TicTacToeGame implements Game {
     private final GameBoard ticTacToeBoard;
     private final List<GamePlayer> gamePlayers;
     private final List<WinCondition> winConditions;
-
+    private final List<GameObject> gameObjects;
     private final Team[] turnProgression;
+
     private int currentTurnIndex = 0;
 
-    public TicTacToeGame(Player playerOne, Player playerTwo, TicTacToeBoard ticTacToeBoard) {
+    public TicTacToeGame(TicTacToeBoard ticTacToeBoard,
+                         List<GamePlayer> gamePlayers,
+                         List<WinCondition> winConditions,
+                         List<GameObject> gameObjects,
+                         Team[] turnProgression) {
         this.ticTacToeBoard = ticTacToeBoard;
-
-        this.gamePlayers = Arrays.asList(
-            new TicTacToePlayer(playerOne, new CircleTeam()),
-            new TicTacToePlayer(playerTwo, new CrossTeam())
-        );
-
-        this.winConditions = Arrays.asList(
-            new DiagonalConditionTicTacToe(ticTacToeBoard),
-            new HorizontalConditionTicTacToe(ticTacToeBoard),
-            new VerticalConditionTicTacToe(ticTacToeBoard)
-        );
-
-        this.turnProgression = new Team[] {
-            new CrossTeam(),
-            new CircleTeam()
-        };
+        this.gamePlayers = gamePlayers;
+        this.winConditions = winConditions;
+        this.gameObjects = gameObjects;
+        this.turnProgression = turnProgression;
     }
 
     @Override
@@ -55,7 +41,7 @@ public class TicTacToeGame implements Game {
 
     @Override
     public List<GameObject> getObjects() {
-        return null;
+        return gameObjects;
     }
 
     @Override

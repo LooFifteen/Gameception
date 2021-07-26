@@ -1,13 +1,11 @@
-package dev.sllcoding.gameception.server;
+package dev.sllcoding.gameception.games.framework.server;
 
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
-import dev.sllcoding.gameception.tictactoe.TicTacToeGameContainer;
-import dev.sllcoding.gameception.tictactoe.commands.TicTacToeCommand;
-import dev.sllcoding.gameception.tictactoe.events.TicTacToeListener;
-import dev.sllcoding.gameception.server.commands.GameceptionCommand;
-import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
-import dev.sllcoding.gameception.server.listeners.ServerListener;
+import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommands;
+import dev.sllcoding.gameception.games.framework.server.commands.GameceptionCommand;
+import dev.sllcoding.gameception.games.framework.server.generators.StoneFlatWorldGenerator;
+import dev.sllcoding.gameception.games.framework.server.listeners.ServerListener;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;
 import net.minestom.server.event.GlobalEventHandler;
@@ -17,8 +15,6 @@ import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.InstanceManager;
 
 public class GameceptionServer {
-    private TicTacToeGameContainer ticTacToeGameContainer = new TicTacToeGameContainer();
-
     private static GameceptionServer INSTANCE;
     public static GameceptionServer getInstance() {
         return INSTANCE;
@@ -61,14 +57,14 @@ public class GameceptionServer {
 
     private void registerListeners() {
         eventAPI.register(new ServerListener());
-        eventAPI.register(new TicTacToeListener(ticTacToeGameContainer));
-        eventAPI.register(new GameListener());
+        //eventAPI.register(new TicTacToeListener(ticTacToeGameContainer));
+//        eventAPI.register(new GameListener());
     }
 
     private void registerCommands() {
         CommandManager commandManager = MinecraftServer.getCommandManager();
         commandManager.register(new GameceptionCommand());
-        commandManager.register(new TicTacToeCommand(ticTacToeGameContainer));
+        commandManager.register(new TicTacToeCommands());
     }
 
     public InstanceContainer getMainInstance() {

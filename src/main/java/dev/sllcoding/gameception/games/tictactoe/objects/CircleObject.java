@@ -1,0 +1,24 @@
+package dev.sllcoding.gameception.games.tictactoe.objects;
+
+import dev.sllcoding.gameception.games.framework.GameObject;
+import dev.sllcoding.gameception.games.framework.Team;
+import dev.sllcoding.gameception.games.tictactoe.teams.CircleTeam;
+import net.minestom.server.entity.Entity;
+
+import java.awt.*;
+
+// TODO: put game object in TEAM instead???
+public class CircleObject implements GameObject {
+    @Override
+    public Team getTeam() {
+        return new CircleTeam();
+    }
+
+    @Override
+    public void render(Graphics2D graphics2D, int x, int y) {
+        graphics2D.drawRect(10, 10, 110, 110);
+
+        int size = 60;
+        graphics2D.drawOval(x - size / 2, y - size / 2, size, size);
+    }
+}
