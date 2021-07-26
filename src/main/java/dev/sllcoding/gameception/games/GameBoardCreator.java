@@ -15,14 +15,6 @@ public class GameBoardCreator {
     public Entity[][] createEntities(int columns, int rows, Pos position, Instance instance) {
         Entity[][] entities = new Entity[rows][columns];
 
-        /*
-                Row 1 ->
-                Column1, Column2, Column 3
-
-                Row 2 ->
-                Column1, Column2, Column 3
-        */
-
         int currentRow = 0;
         int currentColumn = 0;
 
