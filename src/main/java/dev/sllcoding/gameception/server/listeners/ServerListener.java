@@ -15,6 +15,10 @@ import net.minestom.server.ping.ResponseData;
 @Node(name = "gameception", event = Event.class)
 public class ServerListener implements Listener {
 
+    private final Component listLine1 = MiniMessage.get().parse("<gold><strikethrough>--</strikethrough></gold><gray>[</gray> <bold><gradient:#ff6c32:#ff76b6>Gameception</gradient></bold> <gray>]</gray><gold><strikethrough>--</strikethrough></gold><gray>[</gray> <yellow>    luis was here    </yellow> <gray>]</gray><gold><strikethrough>-----</strikethrough></gold>");
+    private final Component listLine2 = MiniMessage.get().parse("<gold><strikethrough>---</strikethrough></gold><gray>[</gray> <yellow>NEWS:</yellow> <gray>]</gray><gold><strikethrough>----</strikethrough></gold><gray>[</gray> <yellow>   i was bored so i made this   </yellow> <gray>]</gray><gold><strikethrough>-</strikethrough></gold>");
+    private final Component list = Component.join(Component.empty(), listLine1, Component.newline(), listLine2);
+
     @Listen
     public void onPlayerLogin(PlayerLoginEvent event) {
         event.setSpawningInstance(GameceptionServer.getInstance().getMainInstance());
@@ -29,10 +33,8 @@ public class ServerListener implements Listener {
     @Listen
     public void onServerListPing(ServerListPingEvent event) {
         ResponseData data = new ResponseData();
-
-        data.setDescription(Component.text("Games in a game :flushed:"));
+        data.setDescription(list);
         data.setMaxPlayer(-1);
-
         event.setResponseData(data);
     }
 
