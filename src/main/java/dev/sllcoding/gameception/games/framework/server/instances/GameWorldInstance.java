@@ -1,7 +1,7 @@
-package dev.sllcoding.gameception.server.instances;
+package dev.sllcoding.gameception.games.framework.server.instances;
 
-import dev.sllcoding.gameception.server.GameceptionServer;
-import dev.sllcoding.gameception.server.generators.GameWorldGenerator;
+import dev.sllcoding.gameception.games.framework.server.GameceptionServer;
+import dev.sllcoding.gameception.games.framework.server.generators.GameWorldGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
