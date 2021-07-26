@@ -28,8 +28,6 @@ public class TicTacToeListener implements Listener {
         return gameContainer.isPlayerInGame(playerEvent.getPlayer());
     }
 
-    // TODO: Entity hover??
-
     @Listen
     public void onPlayerEntityInteract(PlayerEntityInteractEvent playerEntityInteractEvent) {
         Player player = playerEntityInteractEvent.getPlayer();

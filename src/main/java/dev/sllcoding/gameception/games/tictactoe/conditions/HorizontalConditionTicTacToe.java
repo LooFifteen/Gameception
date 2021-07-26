@@ -15,13 +15,7 @@ public class HorizontalConditionTicTacToe extends TicTacToeWinConditionBase {
 
     @Override
     public Entity[][] getEntities() {
-        Entity[][] boardEntities = gameBoard.getBoardEntities();
-
-        Entity[] horizontal1 = boardEntities[0];
-        Entity[] horizontal2 = boardEntities[1];
-        Entity[] horizontal3 = boardEntities[2];
-
-        return new Entity[][] { horizontal1, horizontal2, horizontal3 };
+        return gameBoard.getBoardEntities();
     }
 
     @Override

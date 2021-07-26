@@ -5,6 +5,9 @@ import dev.sllcoding.gameception.games.framework.GameContainer;
 import dev.sllcoding.gameception.games.tictactoe.conditions.base.TicTacToeWinConditionBase;
 import net.minestom.server.entity.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiagonalConditionTicTacToe extends TicTacToeWinConditionBase {
     private final GameBoard gameBoard;
 
@@ -17,14 +20,25 @@ public class DiagonalConditionTicTacToe extends TicTacToeWinConditionBase {
     public Entity[][] getEntities() {
         Entity[][] boardEntities = gameBoard.getBoardEntities();
 
-        Entity[] horizontal1 = boardEntities[0];
-        Entity[] horizontal2 = boardEntities[1];
-        Entity[] horizontal3 = boardEntities[2];
+        List<Entity> entityList = new ArrayList<>();
+        List<Entity> entityList1 = new ArrayList<>();
 
-        return new Entity[][] {
-            new Entity[] { horizontal1[0], horizontal2[1], horizontal3[2] },
-            new Entity[] { horizontal1[2], horizontal2[1], horizontal3[0] }
-        };
+        for (int i = 0; i < boardEntities.length; i++) {
+            entityList.add(boardEntities[i][i]);
+        }
+
+
+        int currentColumn = boardEntities.length - 1;
+        int currentRow = 0;
+
+        while (currentColumn >= 0 && currentRow < boardEntities.length) {
+            entityList1.add(boardEntities[currentRow][currentColumn]);
+
+            currentColumn--;
+            currentRow++;
+        }
+
+        return new Entity[][] { entityList.toArray(new Entity[0]), entityList1.toArray(new Entity[0]) };
     }
 
     @Override

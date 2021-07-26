@@ -9,6 +9,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.player.PlayerLoginEvent;
+import net.minestom.server.event.player.PlayerSpawnEvent;
 import net.minestom.server.event.server.ServerListPingEvent;
 import net.minestom.server.ping.ResponseData;
 
@@ -36,6 +37,11 @@ public class ServerListener implements Listener {
         data.setDescription(list);
         data.setMaxPlayer(-1);
         event.setResponseData(data);
+    }
+
+    @Listen
+    public void onPlayerSpawn(PlayerSpawnEvent playerSpawnEvent) {
+        playerSpawnEvent.getPlayer().setAllowFlying(true);
     }
 
 }
