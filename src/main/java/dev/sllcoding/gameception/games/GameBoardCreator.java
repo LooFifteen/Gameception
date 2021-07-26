@@ -12,22 +12,32 @@ import net.minestom.server.item.metadata.MapMeta;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameBoardCreator {
-    public Entity[][] createEntities(int rows, int columns, Pos position, Instance instance) {
-        int row = 0, j = 0;
+    public Entity[][] createEntities(int columns, int rows, Pos position, Instance instance) {
         Entity[][] entities = new Entity[rows][columns];
 
-        for (int i = 0; i < rows * columns; i++) {
-            if (i > 0 && i % rows == 0) {
-                row++;
-                j = 0;
-            }
+        /*
+                Row 1 ->
+                Column1, Column2, Column 3
 
+                Row 2 ->
+                Column1, Column2, Column 3
+        */
+
+        int currentRow = 0;
+        int currentColumn = 0;
+
+        while (currentRow < rows) {
             ItemStack map = createMap();
-            Pos newPosition = position.add(j, row, 0).withYaw(position.yaw() + 180);
+            Pos newPosition = position.add(currentColumn, currentRow, 0).withYaw(position.yaw() + 180);
             Entity itemFrame = createItemFrame(instance, newPosition, map);
-            entities[row][j] = itemFrame;
+            entities[currentRow][currentColumn] = itemFrame;
 
-            j++;
+            currentColumn++;
+
+            if (currentColumn == columns) {
+                currentColumn = 0;
+                currentRow++;
+            }
         }
 
         return entities;

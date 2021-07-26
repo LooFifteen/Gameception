@@ -84,6 +84,11 @@ public class TicTacToeGame implements Game {
         }
 
         GameBoard board = getBoard();
+
+        if (!board.canPlace(entity, gamePlayer)) {
+            return;
+        }
+
         board.place(entity, gamePlayer);
 
         for (WinCondition winCondition : winConditions) {

@@ -13,5 +13,6 @@ public interface GameBoard {
 
     boolean allPresent();
 
+    boolean canPlace(Entity entity, GamePlayer gamePlayer);
     void place(Entity entity, GamePlayer gamePlayer);
 }

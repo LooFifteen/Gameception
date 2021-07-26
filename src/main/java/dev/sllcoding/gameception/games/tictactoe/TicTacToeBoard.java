@@ -77,8 +77,13 @@ public class TicTacToeBoard implements GameBoard {
     }
 
     @Override
+    public boolean canPlace(Entity entity, GamePlayer gamePlayer) {
+        return !renderedEntities.contains(entity);
+    }
+
+    @Override
     public void place(Entity entity, GamePlayer gamePlayer) {
-        if (renderedEntities.contains(entity)) {
+        if (!canPlace(entity, gamePlayer)) {
             return;
         }
 
