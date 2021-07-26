@@ -116,13 +116,11 @@ public class TicTacToeGame implements Game {
 
     @Override
     public Team getCurrentTurn() {
-        // iterate here?
-        currentTurnIndex++;
-
         if (currentTurnIndex >= turnProgression.length) {
             currentTurnIndex = 0;
         }
 
-        return turnProgression[0];
+        int turn = currentTurnIndex++;
+        return turnProgression[turn];
     }
 }
