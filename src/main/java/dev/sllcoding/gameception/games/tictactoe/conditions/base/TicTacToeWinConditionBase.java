@@ -1,8 +1,8 @@
 package dev.sllcoding.gameception.games.tictactoe.conditions.base;
 
-import dev.sllcoding.gameception.games.framework.*;
-import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
-import dev.sllcoding.gameception.games.framework.results.GameResult;
+import dev.sllcoding.gameception.games.framework.v1.*;
+import dev.sllcoding.gameception.games.framework.v1.conditions.WinCondition;
+import dev.sllcoding.gameception.games.framework.v1.results.GameResult;
 import dev.sllcoding.gameception.games.tictactoe.results.TicTacToeGameResult;
 import net.minestom.server.entity.Entity;
 

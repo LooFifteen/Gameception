@@ -1,7 +1,7 @@
 package dev.sllcoding.gameception.games.tictactoe.conditions;
 
-import dev.sllcoding.gameception.games.framework.GameBoard;
-import dev.sllcoding.gameception.games.framework.GameContainer;
+import dev.sllcoding.gameception.games.framework.v1.GameBoard;
+import dev.sllcoding.gameception.games.framework.v1.GameContainer;
 import dev.sllcoding.gameception.games.tictactoe.conditions.base.TicTacToeWinConditionBase;
 import net.minestom.server.entity.Entity;
 

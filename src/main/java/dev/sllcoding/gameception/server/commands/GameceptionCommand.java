@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework.server.commands;
+package dev.sllcoding.gameception.server.commands;
 
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minestom.server.command.CommandSender;

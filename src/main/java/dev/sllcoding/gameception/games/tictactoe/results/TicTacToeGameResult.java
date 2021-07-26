@@ -1,9 +1,9 @@
 package dev.sllcoding.gameception.games.tictactoe.results;
 
-import dev.sllcoding.gameception.games.framework.Game;
-import dev.sllcoding.gameception.games.framework.GameContainer;
-import dev.sllcoding.gameception.games.framework.GamePlayer;
-import dev.sllcoding.gameception.games.framework.Team;
+import dev.sllcoding.gameception.games.framework.v1.Game;
+import dev.sllcoding.gameception.games.framework.v1.GameContainer;
+import dev.sllcoding.gameception.games.framework.v1.GamePlayer;
+import dev.sllcoding.gameception.games.framework.v1.Team;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.title.Title;

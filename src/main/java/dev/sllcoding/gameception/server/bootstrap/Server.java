@@ -1,6 +1,6 @@
-package dev.sllcoding.gameception.bootstrap;
+package dev.sllcoding.gameception.server.bootstrap;
 
-import dev.sllcoding.gameception.games.framework.server.GameceptionServer;
+import dev.sllcoding.gameception.server.GameceptionServer;
 import net.minestom.server.MinecraftServer;
 
 public class Server {

@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework.server.generators;
+package dev.sllcoding.gameception.server.generators;
 
 import net.minestom.server.instance.Chunk;
 import net.minestom.server.instance.ChunkGenerator;

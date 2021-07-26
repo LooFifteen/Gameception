@@ -1,11 +1,11 @@
 package dev.sllcoding.gameception.games.tictactoe.conditions;
 
-import dev.sllcoding.gameception.games.framework.Game;
-import dev.sllcoding.gameception.games.framework.GameBoard;
-import dev.sllcoding.gameception.games.framework.GameContainer;
-import dev.sllcoding.gameception.games.framework.GamePlayer;
-import dev.sllcoding.gameception.games.framework.conditions.WinCondition;
-import dev.sllcoding.gameception.games.framework.results.GameResult;
+import dev.sllcoding.gameception.games.framework.v1.Game;
+import dev.sllcoding.gameception.games.framework.v1.GameBoard;
+import dev.sllcoding.gameception.games.framework.v1.GameContainer;
+import dev.sllcoding.gameception.games.framework.v1.GamePlayer;
+import dev.sllcoding.gameception.games.framework.v1.conditions.WinCondition;
+import dev.sllcoding.gameception.games.framework.v1.results.GameResult;
 import dev.sllcoding.gameception.games.tictactoe.results.TicTacToeTieResult;
 
 import java.util.Optional;

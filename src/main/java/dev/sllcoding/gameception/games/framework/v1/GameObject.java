@@ -1,4 +1,4 @@
-package dev.sllcoding.gameception.games.framework;
+package dev.sllcoding.gameception.games.framework.v1;
 
 import java.awt.*;
 

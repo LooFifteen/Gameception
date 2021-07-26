@@ -1,7 +1,7 @@
 package dev.sllcoding.gameception.games.tictactoe;
 
-import dev.sllcoding.gameception.games.framework.GamePlayer;
-import dev.sllcoding.gameception.games.framework.Team;
+import dev.sllcoding.gameception.games.framework.v1.GamePlayer;
+import dev.sllcoding.gameception.games.framework.v1.Team;
 import net.minestom.server.entity.Player;
 
 public class TicTacToePlayer implements GamePlayer {

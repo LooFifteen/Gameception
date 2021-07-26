@@ -1,7 +1,7 @@
 package dev.sllcoding.gameception.games.tictactoe.commands;
 
 import dev.sllcoding.gameception.games.GameBoardCreator;
-import dev.sllcoding.gameception.games.framework.GameContainer;
+import dev.sllcoding.gameception.games.framework.v1.GameContainer;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeBoard;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeGame;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToePlayer;

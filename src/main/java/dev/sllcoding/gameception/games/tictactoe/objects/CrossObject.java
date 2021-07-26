@@ -1,6 +1,6 @@
 package dev.sllcoding.gameception.games.tictactoe.objects;
 
-import dev.sllcoding.gameception.games.framework.GameObject;
+import dev.sllcoding.gameception.games.framework.v1.GameObject;
 
 import java.awt.*;
 

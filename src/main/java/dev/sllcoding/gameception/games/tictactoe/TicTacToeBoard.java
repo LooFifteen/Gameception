@@ -1,8 +1,8 @@
 package dev.sllcoding.gameception.games.tictactoe;
 
-import dev.sllcoding.gameception.games.framework.GameBoard;
-import dev.sllcoding.gameception.games.framework.GamePlayer;
-import dev.sllcoding.gameception.games.framework.Team;
+import dev.sllcoding.gameception.games.framework.v1.GameBoard;
+import dev.sllcoding.gameception.games.framework.v1.GamePlayer;
+import dev.sllcoding.gameception.games.framework.v1.Team;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.metadata.other.ItemFrameMeta;
