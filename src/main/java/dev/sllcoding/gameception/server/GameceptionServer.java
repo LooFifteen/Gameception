@@ -7,8 +7,8 @@ import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommand;
 import dev.sllcoding.gameception.games.tictactoe.events.TicTacToeListener;
 import dev.sllcoding.gameception.server.commands.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
+import dev.sllcoding.gameception.server.listeners.GameListener;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
-import dev.sllcoding.gameception.server.listeners.TestingListener;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;
 import net.minestom.server.event.GlobalEventHandler;
@@ -63,6 +63,7 @@ public class GameceptionServer {
     private void registerListeners() {
         eventAPI.register(new ServerListener());
         eventAPI.register(new TicTacToeListener(ticTacToeGameContainer));
+        eventAPI.register(new GameListener());
     }
 
     private void registerCommands() {

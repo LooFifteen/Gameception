@@ -116,3 +116,4 @@ run/
 .minestom_tmp/
 extensions/
 minecraft_data/
+.mixin.out/

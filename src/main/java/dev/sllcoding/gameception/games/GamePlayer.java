@@ -4,6 +4,7 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.map.framebuffers.DirectFramebuffer;
 import net.minestom.server.map.framebuffers.Graphics2DFramebuffer;
 import net.minestom.server.network.packet.server.play.MapDataPacket;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class GamePlayer {
 
     private final Player player;
     private final Map<Integer, Graphics2D> maps = new HashMap<>();
+    private Game currentGame = null;
 
     private GamePlayer(Player player) {
         this.player = player;
@@ -63,6 +65,25 @@ public class GamePlayer {
         fb.preparePacket(map);
         player.getPlayerConnection().sendPacket(map);
         maps.remove(id);
+    }
+
+    public boolean setCurrentGame(@NotNull Game currentGame) {
+        boolean happened = currentGame.addPlayer(this);
+        if (happened) {
+            if (this.currentGame != null) currentGame.removePlayer(this);
+            this.currentGame = currentGame;
+        }
+        return happened;
+    }
+
+    public boolean leaveCurrentGame() {
+        boolean happened = currentGame.removePlayer(this);
+        if (happened) currentGame = null;
+        return happened;
+    }
+
+    public Game getCurrentGame() {
+        return currentGame;
     }
 
 }
