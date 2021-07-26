@@ -11,6 +11,7 @@ import net.minestom.server.utils.time.TimeUnit;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class TicTacToeGame implements Game {
     private final GameBoard ticTacToeBoard;
@@ -66,6 +67,7 @@ public class TicTacToeGame implements Game {
     public void update(Entity entity) {
         Team currentTurn = getCurrentTurn();
 
+        // TODO: refactor this later. wont work with multiple players per team.
         Optional<GamePlayer> gamePlayerOptional = getPlayers().stream()
                 .filter(gamePlayer -> gamePlayer.getTeam().equals(currentTurn))
                 .findFirst();
@@ -96,6 +98,11 @@ public class TicTacToeGame implements Game {
         if (currentTurnIndex >= turnProgression.length) {
             currentTurnIndex = 0;
         }
+    }
+
+    @Override
+    public Optional<GamePlayer> getPlayer(UUID identifier) {
+        return gamePlayers.stream().filter(x -> x.getPlayer().getUuid().equals(identifier)).findFirst();
     }
 
     @Override

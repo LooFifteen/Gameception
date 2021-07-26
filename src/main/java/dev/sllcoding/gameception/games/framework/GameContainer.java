@@ -22,10 +22,7 @@ public class GameContainer {
     }
 
     public Optional<Game> getOngoingGame(Player player) {
-        return onGoingGames.stream().filter(game -> {
-            List<GamePlayer> players = game.getPlayers();
-            return players.stream().anyMatch(x -> x.getPlayer().equals(player));
-        }).findFirst();
+        return onGoingGames.stream().filter(game -> game.getPlayer(player.getUuid()).isPresent()).findFirst();
     }
 
     public void removeGame(Game game) {

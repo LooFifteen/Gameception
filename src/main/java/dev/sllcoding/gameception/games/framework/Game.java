@@ -6,6 +6,8 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.Player;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface Game {
     List<GamePlayer> getPlayers();
@@ -16,6 +18,8 @@ public interface Game {
     void start();
     void end();
     void update(Entity entity);
+
+    Optional<GamePlayer> getPlayer(UUID identifier);
 
     Team getCurrentTurn();
 }
