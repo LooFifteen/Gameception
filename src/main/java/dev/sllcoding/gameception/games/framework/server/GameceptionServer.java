@@ -3,10 +3,10 @@ package dev.sllcoding.gameception.games.framework.server;
 import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
 import dev.sllcoding.gameception.games.framework.GameContainer;
-import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommands;
 import dev.sllcoding.gameception.games.framework.server.commands.GameceptionCommand;
 import dev.sllcoding.gameception.games.framework.server.generators.StoneFlatWorldGenerator;
 import dev.sllcoding.gameception.games.framework.server.listeners.ServerListener;
+import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommands;
 import dev.sllcoding.gameception.games.tictactoe.listeners.TicTacToeListener;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;
@@ -30,6 +30,7 @@ public class GameceptionServer {
 
     public void init(String[] args) {
         // SLL IS UGLY
+        // no u
         INSTANCE = this;
 
         gameContainer = new GameContainer();
