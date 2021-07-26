@@ -4,6 +4,7 @@ import com.github.christian162.EventAPI;
 import com.github.christian162.EventAPIOptions;
 import dev.sllcoding.gameception.games.tictactoe.TicTacToeGameContainer;
 import dev.sllcoding.gameception.games.tictactoe.commands.TicTacToeCommand;
+import dev.sllcoding.gameception.server.commands.GameceptionCommand;
 import dev.sllcoding.gameception.server.generators.StoneFlatWorldGenerator;
 import dev.sllcoding.gameception.server.listeners.ServerListener;
 import dev.sllcoding.gameception.server.listeners.TestingListener;
@@ -65,6 +66,7 @@ public class GameceptionServer {
 
     private void registerCommands() {
         CommandManager commandManager = MinecraftServer.getCommandManager();
+        commandManager.register(new GameceptionCommand());
         commandManager.register(new TicTacToeCommand(ticTacToeGameContainer));
     }
 

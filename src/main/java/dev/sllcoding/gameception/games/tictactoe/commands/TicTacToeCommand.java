@@ -60,7 +60,7 @@ public class TicTacToeCommand extends Command {
 
                 TicTacToeGame ticTacToeGame = new TicTacToeGame(sender, otherPlayer);
                 ticTacToeGameContainer.addGame(ticTacToeGame);
-                
+
                 int row = 0;
 
                 for (int i = 0, j = 0; i < 9; i++) {
