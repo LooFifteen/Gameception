@@ -4,6 +4,7 @@ import dev.sllcoding.gameception.games.framework.Renderable;
 
 import java.awt.*;
 
+@Deprecated(forRemoval = true)
 public class MinesweeperEmptyRenderable implements Renderable {
     @Override
     public void render(Graphics2D graphics2D, int x, int y) {

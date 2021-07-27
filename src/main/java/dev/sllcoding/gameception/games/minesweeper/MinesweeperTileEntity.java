@@ -1,7 +1,6 @@
 package dev.sllcoding.gameception.games.minesweeper;
 
 import dev.sllcoding.gameception.games.framework.AbstractTileEntity;
-import dev.sllcoding.gameception.games.minesweeper.rendering.MinesweeperEmptyRenderable;
 import dev.sllcoding.gameception.games.minesweeper.rendering.MinesweeperRenderable;
 import dev.sllcoding.gameception.games.minesweeper.types.MineSweeperTileType;
 import net.minestom.server.coordinate.Pos;
@@ -24,7 +23,7 @@ public class MinesweeperTileEntity extends AbstractTileEntity {
         ItemFrameMeta itemFrameMeta = (ItemFrameMeta) getEntityMeta();
         itemFrameMeta.setOrientation(ItemFrameMeta.Orientation.UP);
 
-        draw(new MinesweeperEmptyRenderable(), 0, 0);
+        draw(new MinesweeperRenderable(MineSweeperTileType.Unknown), 0, 0);
 
         setInstance(instance, position);
     }
