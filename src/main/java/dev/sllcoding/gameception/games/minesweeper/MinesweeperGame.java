@@ -23,6 +23,7 @@ public class MinesweeperGame extends SingleplayerGameBase {
 
     @Override
     public void onTileClick(Player player, AbstractTileEntity abstractTileEntity) {
+        // ...
         abstractTileEntity.update();
     }
 
