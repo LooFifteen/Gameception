@@ -1,6 +1,7 @@
 package dev.sllcoding.gameception.games.minesweeper;
 
 import com.extollit.linalg.mutable.Vec2d;
+import dev.sllcoding.gameception.games.framework.AbstractTileEntity;
 import dev.sllcoding.gameception.games.minesweeper.types.MineSweeperTileType;
 import net.minestom.server.entity.Player;
 
@@ -9,21 +10,22 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+// TODO: delete this class.
 public class MinesweeperTileEntityFactory {
     private final int ROWS = 16,
                       COLUMNS = 16,
                       MINES = 40;
 
-    public List<MinesweeperTileEntity> createTileEntities(Player spawningPlayer) {
+    public List<AbstractTileEntity> createTileEntities(Player spawningPlayer) {
         MineSweeperTileType[][] mineSweeperTileTypes = new MineSweeperTileType[ROWS][COLUMNS];
         fillMines(mineSweeperTileTypes);
 
         return createBoardEntities(spawningPlayer, mineSweeperTileTypes);
     }
 
-    private List<MinesweeperTileEntity> createBoardEntities(Player spawningPlayer, MineSweeperTileType[][] mineSweeperTileTypes) {
+    private List<AbstractTileEntity> createBoardEntities(Player spawningPlayer, MineSweeperTileType[][] mineSweeperTileTypes) {
         int currentRow = 0, currentColumn = 0;
-        List<MinesweeperTileEntity> minesweeperTileEntities = new ArrayList<>();
+        List<AbstractTileEntity> minesweeperTileEntities = new ArrayList<>();
 
         for (MineSweeperTileType[] mineSweeperTileType : mineSweeperTileTypes) {
 
@@ -62,7 +64,7 @@ public class MinesweeperTileEntityFactory {
         }
     }
 
-    private MinesweeperTileEntity createTileEntity(Player spawningPlayer, int currentRow, int currentColumn, MineSweeperTileType mineSweeperTileType) {
+    private AbstractTileEntity createTileEntity(Player spawningPlayer, int currentRow, int currentColumn, MineSweeperTileType mineSweeperTileType) {
         MinesweeperTileEntity tileEntity = new MinesweeperTileEntity(spawningPlayer.getInstance(),
                 spawningPlayer.getPosition().add(currentColumn, 0, currentRow).withYaw(180).withPitch(90),
                 mineSweeperTileType);

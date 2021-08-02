@@ -11,11 +11,13 @@ public class MinesweeperTileEntity extends AbstractTileEntity {
     private final Instance instance;
     private final Pos position;
     private final MinesweeperRenderable minesweeperRenderable;
+    private MineSweeperTileType mineSweeperTileType;
 
     public MinesweeperTileEntity(Instance instance, Pos position, MineSweeperTileType mineSweeperTileType) {
         this.instance = instance;
         this.position = position;
         this.minesweeperRenderable = new MinesweeperRenderable(mineSweeperTileType);
+        this.mineSweeperTileType = mineSweeperTileType;
     }
 
     @Override
@@ -31,5 +33,9 @@ public class MinesweeperTileEntity extends AbstractTileEntity {
     @Override
     public void update() {
         draw(minesweeperRenderable, 0, 0);
+    }
+
+    public MineSweeperTileType getMineSweeperTileType() {
+        return mineSweeperTileType;
     }
 }

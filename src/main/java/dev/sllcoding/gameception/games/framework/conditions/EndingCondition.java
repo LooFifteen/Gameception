@@ -5,6 +5,6 @@ import dev.sllcoding.gameception.games.framework.endings.Ending;
 
 import java.util.Optional;
 
-public interface WinCondition {
+public interface EndingCondition {
     Optional<Ending> evaluate(Game game);
 }

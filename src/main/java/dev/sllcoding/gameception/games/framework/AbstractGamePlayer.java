@@ -8,7 +8,7 @@ import java.util.UUID;
 
 // TODO: refactor this or just delete it?
 public abstract class AbstractGamePlayer {
-    protected Player player;
+    private final Player player;
 
     public AbstractGamePlayer(Player player) {
         this.player = player;
@@ -16,4 +16,8 @@ public abstract class AbstractGamePlayer {
 
     public abstract void initialize();
     public abstract void cleanup();
+
+    public Player getPlayer() {
+        return player;
+    }
 }

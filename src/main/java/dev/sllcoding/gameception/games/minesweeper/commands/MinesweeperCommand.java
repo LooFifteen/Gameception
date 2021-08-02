@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.minesweeper.commands;
 
+import dev.sllcoding.gameception.games.framework.AbstractTileEntity;
 import dev.sllcoding.gameception.games.minesweeper.MinesweeperGame;
 import dev.sllcoding.gameception.games.minesweeper.MinesweeperTileEntity;
 import dev.sllcoding.gameception.games.minesweeper.MinesweeperTileEntityFactory;
@@ -37,13 +38,14 @@ public class MinesweeperCommand extends Command {
         }
 
         MinesweeperTileEntityFactory minesweeperTileEntityFactory = new MinesweeperTileEntityFactory();
-        List<MinesweeperTileEntity> tileEntities = minesweeperTileEntityFactory.createTileEntities(player);
+        List<AbstractTileEntity> tileEntities = minesweeperTileEntityFactory.createTileEntities(player);
 
-        for (MinesweeperTileEntity tileEntity : tileEntities) {
+        for (AbstractTileEntity tileEntity : tileEntities) {
             tileEntity.initialize();
         }
 
-        MinesweeperGame minesweeperGame = new MinesweeperGame(player);
+        MinesweeperGame minesweeperGame = new MinesweeperGame(player, tileEntities);
+        minesweeperGame.startGame();
         minesweeperGameContainer.addOngoingGame(player, minesweeperGame);
     }
 }
