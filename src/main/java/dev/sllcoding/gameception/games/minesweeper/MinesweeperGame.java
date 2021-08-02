@@ -13,7 +13,7 @@ public class MinesweeperGame extends SingleplayerGameBase {
 
     public MinesweeperGame(Player player) {
         this.gameId = ThreadLocalRandom.current().nextInt(100000);
-        this.abstractGamePlayer = (MinesweeperPlayer) player;
+        this.abstractGamePlayer = new MinesweeperPlayer(player);
     }
 
     @Override

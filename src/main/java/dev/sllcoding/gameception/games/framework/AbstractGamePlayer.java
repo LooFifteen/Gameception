@@ -6,9 +6,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public abstract class AbstractGamePlayer extends Player {
-    public AbstractGamePlayer(@NotNull UUID uuid, @NotNull String username, @NotNull PlayerConnection playerConnection) {
-        super(uuid, username, playerConnection);
+// TODO: refactor this or just delete it?
+public abstract class AbstractGamePlayer {
+    protected Player player;
+
+    public AbstractGamePlayer(Player player) {
+        this.player = player;
     }
 
     public abstract void initialize();

@@ -14,16 +14,34 @@ public class MinesweeperTileEntityFactory {
                       COLUMNS = 16,
                       MINES = 40;
 
-    private final List<MineSweeperTileType> mineSweeperTileTypes;
-
-    public MinesweeperTileEntityFactory() {
-        this.mineSweeperTileTypes = Arrays.stream(MineSweeperTileType.values())
-                .filter(mineSweeperTileType -> mineSweeperTileType != MineSweeperTileType.Unknown)
-                .collect(Collectors.toList());
-    }
-
     public List<MinesweeperTileEntity> createTileEntities(Player spawningPlayer) {
         MineSweeperTileType[][] mineSweeperTileTypes = new MineSweeperTileType[ROWS][COLUMNS];
+        fillMines(mineSweeperTileTypes);
+
+        return createBoardEntities(spawningPlayer, mineSweeperTileTypes);
+    }
+
+    private List<MinesweeperTileEntity> createBoardEntities(Player spawningPlayer, MineSweeperTileType[][] mineSweeperTileTypes) {
+        int currentRow = 0, currentColumn = 0;
+        List<MinesweeperTileEntity> minesweeperTileEntities = new ArrayList<>();
+
+        for (MineSweeperTileType[] mineSweeperTileType : mineSweeperTileTypes) {
+
+            for (MineSweeperTileType sweeperTileType : mineSweeperTileType) {
+                minesweeperTileEntities.add(createTileEntity(spawningPlayer, currentRow, currentColumn,
+                        Objects.requireNonNullElse(sweeperTileType, MineSweeperTileType.Empty)));
+
+                currentColumn++;
+            }
+
+            currentRow++;
+            currentColumn = 0;
+        }
+
+        return minesweeperTileEntities;
+    }
+
+    private void fillMines(MineSweeperTileType[][] mineSweeperTileTypes) {
         int currentAmountOfMines = 0;
 
         while (currentAmountOfMines < MINES) {
@@ -42,28 +60,6 @@ public class MinesweeperTileEntityFactory {
             mineSweeperTileTypes[rowIndex][columnIndex] = MineSweeperTileType.Mine;
             currentAmountOfMines++;
         }
-
-        int currentRow = 0, currentColumn = 0;
-        List<MinesweeperTileEntity> minesweeperTileEntities = new ArrayList<>();
-
-        for (MineSweeperTileType[] mineSweeperTileType : mineSweeperTileTypes) {
-
-            for (MineSweeperTileType sweeperTileType : mineSweeperTileType) {
-
-                if (sweeperTileType != null) {
-                    minesweeperTileEntities.add(createTileEntity(spawningPlayer, currentRow, currentColumn, sweeperTileType));
-                } else {
-                    minesweeperTileEntities.add(createTileEntity(spawningPlayer, currentRow, currentColumn, MineSweeperTileType.Empty));
-                }
-
-                currentColumn++;
-            }
-
-            currentRow++;
-            currentColumn = 0;
-        }
-
-        return minesweeperTileEntities;
     }
 
     private MinesweeperTileEntity createTileEntity(Player spawningPlayer, int currentRow, int currentColumn, MineSweeperTileType mineSweeperTileType) {

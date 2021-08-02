@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.minesweeper.types;
 
+// TODO: refactor this code.
 public enum MineSweeperTileType {
     Unknown("unknown.png"),
     Empty("empty.png"),
