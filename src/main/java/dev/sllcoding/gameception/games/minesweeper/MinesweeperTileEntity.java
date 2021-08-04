@@ -10,14 +10,19 @@ import net.minestom.server.instance.Instance;
 public class MinesweeperTileEntity extends AbstractTileEntity {
     private final Instance instance;
     private final Pos position;
-    private final MinesweeperRenderable minesweeperRenderable;
-    private MineSweeperTileType mineSweeperTileType;
+//    private final MinesweeperRenderable minesweeperRenderable;
+
+    private final MineSweeperTileType mineSweeperTileType;
+    private MineSweeperTileType renderedTileType;
 
     public MinesweeperTileEntity(Instance instance, Pos position, MineSweeperTileType mineSweeperTileType) {
         this.instance = instance;
         this.position = position;
-        this.minesweeperRenderable = new MinesweeperRenderable(mineSweeperTileType);
+
+//        this.minesweeperRenderable = new MinesweeperRenderable(mineSweeperTileType);
+
         this.mineSweeperTileType = mineSweeperTileType;
+        this.renderedTileType = MineSweeperTileType.Unknown;
     }
 
     @Override
@@ -25,17 +30,25 @@ public class MinesweeperTileEntity extends AbstractTileEntity {
         ItemFrameMeta itemFrameMeta = (ItemFrameMeta) getEntityMeta();
         itemFrameMeta.setOrientation(ItemFrameMeta.Orientation.UP);
 
-        draw(new MinesweeperRenderable(MineSweeperTileType.Unknown), 0, 0);
+        update();
 
         setInstance(instance, position);
     }
 
     @Override
     public void update() {
-        draw(minesweeperRenderable, 0, 0);
+        draw(new MinesweeperRenderable(renderedTileType), 0, 0);
     }
 
     public MineSweeperTileType getMineSweeperTileType() {
         return mineSweeperTileType;
+    }
+
+    public MineSweeperTileType getRenderedTileType() {
+        return renderedTileType;
+    }
+
+    public void setRenderedTileType(MineSweeperTileType renderedTileType) {
+        this.renderedTileType = renderedTileType;
     }
 }
