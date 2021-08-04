@@ -21,7 +21,7 @@ public abstract class MinesweeperTileTypeEndingCondition implements EndingCondit
 
     @Override
     public Optional<Ending> evaluate(Game game) {
-        if (minesweeperTileEntity.getMineSweeperTileType() == getTileType() && minesweeperTileEntity.getRenderedTileType() != getTileType()) {
+        if (minesweeperTileEntity.getMineSweeperTileType() == getTileType() && minesweeperTileEntity.getRenderedTileType() == getTileType()) {
             return Optional.of(getEnding(game));
         }
 
