@@ -22,8 +22,8 @@ public class PlayerWonEndingCondition implements EndingCondition {
                     .map(x -> (MinesweeperTileEntity) x)
                     .collect(Collectors.toList());
 
-            boolean allEntitiesInCorrectState = entities.stream().allMatch(x -> x.getRenderedTileType() == x.getMineSweeperTileType() ||
-                    (x.getRenderedTileType() == MineSweeperTileType.Flagged && x.getMineSweeperTileType() == MineSweeperTileType.Mine) &&
+            boolean allEntitiesInCorrectState = entities.stream().allMatch(x -> (x.getRenderedTileType() == x.getMineSweeperTileType() ||
+                    (x.getRenderedTileType() == MineSweeperTileType.Flagged && x.getMineSweeperTileType() == MineSweeperTileType.Mine)) &&
                     x.getMineSweeperTileType() != MineSweeperTileType.Mine);
 
             if (allEntitiesInCorrectState) {
