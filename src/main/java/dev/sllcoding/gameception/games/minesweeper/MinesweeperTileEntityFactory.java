@@ -1,14 +1,13 @@
 package dev.sllcoding.gameception.games.minesweeper;
 
-import com.extollit.linalg.mutable.Vec2d;
 import dev.sllcoding.gameception.games.framework.AbstractTileEntity;
 import dev.sllcoding.gameception.games.minesweeper.types.MineSweeperTileType;
 import net.minestom.server.entity.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 // TODO: delete this class.
 public class MinesweeperTileEntityFactory {
@@ -19,6 +18,7 @@ public class MinesweeperTileEntityFactory {
     public List<AbstractTileEntity> createTileEntities(Player spawningPlayer) {
         MineSweeperTileType[][] mineSweeperTileTypes = new MineSweeperTileType[ROWS][COLUMNS];
         fillMines(mineSweeperTileTypes);
+        fillVoid(mineSweeperTileTypes);
 
         return createBoardEntities(spawningPlayer, mineSweeperTileTypes);
     }
@@ -62,6 +62,26 @@ public class MinesweeperTileEntityFactory {
             mineSweeperTileTypes[rowIndex][columnIndex] = MineSweeperTileType.Mine;
             currentAmountOfMines++;
         }
+    }
+
+    private void fillVoid(MineSweeperTileType[][] mineSweeperTileTypes) {
+        for (int x = 0; x < mineSweeperTileTypes.length; x++)
+            for (int y = 0; y < mineSweeperTileTypes[x].length; y++) {
+                if (mineSweeperTileTypes[x][y] == MineSweeperTileType.Mine) continue;
+                int mines = 0;
+                for (int r = x - 1; r <= x + 1; r++) if (r >= 0 && r < COLUMNS) for (int c = y - 1; c <= y + 1; c++) if (c >= 0 && c < ROWS) if (mineSweeperTileTypes[r][c] == MineSweeperTileType.Mine) mines++;
+                mineSweeperTileTypes[x][y] = switch (mines) {
+                    case 1 -> MineSweeperTileType.One;
+                    case 2 -> MineSweeperTileType.Two;
+                    case 3 -> MineSweeperTileType.Three;
+                    case 4 -> MineSweeperTileType.Four;
+                    case 5 -> MineSweeperTileType.Five;
+                    case 6 -> MineSweeperTileType.Six;
+                    case 7 -> MineSweeperTileType.Seven;
+                    case 8 -> MineSweeperTileType.Eight;
+                    default -> MineSweeperTileType.Empty;
+                };
+            }
     }
 
     private AbstractTileEntity createTileEntity(Player spawningPlayer, int currentRow, int currentColumn, MineSweeperTileType mineSweeperTileType) {
