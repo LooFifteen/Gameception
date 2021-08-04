@@ -24,6 +24,10 @@ public abstract class SingleplayerGameBase implements Game {
 
     @Override
     public void endGame(Ending ending) {
+        if (!gameOngoing) {
+            return;
+        }
+
         gameOngoing = false;
 
         AbstractGamePlayer gamePlayer = getGamePlayer();

@@ -68,8 +68,14 @@ public class MinesweeperTileEntityFactory {
         for (int x = 0; x < mineSweeperTileTypes.length; x++)
             for (int y = 0; y < mineSweeperTileTypes[x].length; y++) {
                 if (mineSweeperTileTypes[x][y] == MineSweeperTileType.Mine) continue;
+
                 int mines = 0;
-                for (int r = x - 1; r <= x + 1; r++) if (r >= 0 && r < COLUMNS) for (int c = y - 1; c <= y + 1; c++) if (c >= 0 && c < ROWS) if (mineSweeperTileTypes[r][c] == MineSweeperTileType.Mine) mines++;
+
+                for (int r = x - 1; r <= x + 1; r++) if (r >= 0 && r < COLUMNS)
+                    for (int c = y - 1; c <= y + 1; c++) if (c >= 0 && c < ROWS)
+                        if (mineSweeperTileTypes[r][c] == MineSweeperTileType.Mine)
+                            mines++;
+
                 mineSweeperTileTypes[x][y] = switch (mines) {
                     case 1 -> MineSweeperTileType.One;
                     case 2 -> MineSweeperTileType.Two;

@@ -6,6 +6,7 @@ import dev.sllcoding.gameception.games.framework.conditions.EndingCondition;
 import dev.sllcoding.gameception.games.framework.endings.Ending;
 import dev.sllcoding.gameception.games.framework.singleplayer.SingleplayerGameBase;
 import dev.sllcoding.gameception.games.minesweeper.endings.MineEndingCondition;
+import dev.sllcoding.gameception.games.minesweeper.endings.PlayerWonEndingCondition;
 import net.minestom.server.entity.Player;
 
 import java.util.List;
@@ -35,17 +36,31 @@ public class MinesweeperGame extends SingleplayerGameBase {
         // TODO: Knowing about the concrete implementation is a really bad idea.
         // Heavily refactor the framework moving forward...
 
+        // These ending conditions need to be changed as well lol.
+
+        // optimize this obviously
+        // after the refactor
+        // probably use small numbers for states (like shorts)
+
         if (abstractTileEntity instanceof MinesweeperTileEntity minesweeperTileEntity) {
-            MineEndingCondition mineEndingCondition = new MineEndingCondition(minesweeperTileEntity.getMineSweeperTileType());
-            Optional<Ending> endingOptional = mineEndingCondition.evaluate(this);
-
-            if (endingOptional.isEmpty()) {
-                return;
-            }
-
-            Ending ending = endingOptional.get();
-            endGame(ending);
+            checkCondition(new MineEndingCondition(minesweeperTileEntity.getMineSweeperTileType()));
+            checkCondition(new PlayerWonEndingCondition());
         }
+    }
+
+    private void checkCondition(EndingCondition endingCondition) {
+        Optional<Ending> endingOptional = endingCondition.evaluate(this);
+
+        if (endingOptional.isEmpty()) {
+            return;
+        }
+
+        Ending ending = endingOptional.get();
+        endGame(ending);
+    }
+
+    private boolean hasWon() {
+        return false;
     }
 
     @Override
