@@ -5,7 +5,9 @@ import dev.sllcoding.gameception.games.framework.AbstractTileEntity;
 import dev.sllcoding.gameception.games.framework.Game;
 import dev.sllcoding.gameception.games.framework.conditions.EndingCondition;
 import dev.sllcoding.gameception.games.framework.endings.Ending;
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
+import net.minestom.server.utils.time.TimeUnit;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,9 +34,11 @@ public abstract class SingleplayerGameBase implements Game {
         ending.execute();
         gamePlayer.cleanup();
 
-        for (AbstractTileEntity entity : getEntities()) {
-            entity.remove();
-        }
+        MinecraftServer.getSchedulerManager().buildTask(() -> {
+            for (AbstractTileEntity entity : getEntities()) {
+                entity.remove();
+            }
+        }).delay(1, TimeUnit.SECOND).schedule();
     }
 
     public abstract List<AbstractTileEntity> getEntities();

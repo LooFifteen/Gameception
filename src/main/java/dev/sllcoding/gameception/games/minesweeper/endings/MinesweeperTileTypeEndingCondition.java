@@ -15,12 +15,12 @@ public abstract class MinesweeperTileTypeEndingCondition implements EndingCondit
     }
 
     public abstract MineSweeperTileType getTileType();
-    public abstract Ending getEnding();
+    public abstract Ending getEnding(Game game);
 
     @Override
     public Optional<Ending> evaluate(Game game) {
         if (mineSweeperTileType == getTileType()) {
-            return Optional.of(getEnding());
+            return Optional.of(getEnding(game));
         }
 
         return Optional.empty();

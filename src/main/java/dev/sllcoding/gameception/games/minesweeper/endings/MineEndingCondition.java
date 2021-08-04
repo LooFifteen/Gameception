@@ -1,5 +1,6 @@
 package dev.sllcoding.gameception.games.minesweeper.endings;
 
+import dev.sllcoding.gameception.games.framework.Game;
 import dev.sllcoding.gameception.games.framework.endings.Ending;
 import dev.sllcoding.gameception.games.minesweeper.types.MineSweeperTileType;
 
@@ -16,7 +17,7 @@ public class MineEndingCondition extends MinesweeperTileTypeEndingCondition {
     }
 
     @Override
-    public Ending getEnding() {
-        return new MineEnding();
+    public Ending getEnding(Game game) {
+        return new MineEnding(game);
     }
 }
