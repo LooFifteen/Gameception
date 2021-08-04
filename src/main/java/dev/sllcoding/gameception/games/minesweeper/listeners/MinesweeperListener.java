@@ -32,6 +32,12 @@ public class MinesweeperListener implements Listener {
         Entity target = entityAttackEvent.getTarget();
 
         if (entity instanceof Player player && target instanceof MinesweeperTileEntity minesweeperTileEntity) {
+            MinesweeperGame ongoingGame = minesweeperGameContainer.getOngoingGame(player);
+
+            if (ongoingGame == null) {
+                return;
+            }
+
             MineSweeperTileType renderedTileType = minesweeperTileEntity.getRenderedTileType();
 
             if (renderedTileType != MineSweeperTileType.Unknown && renderedTileType != MineSweeperTileType.Flagged) {
@@ -46,7 +52,7 @@ public class MinesweeperListener implements Listener {
             }
 
             minesweeperTileEntity.setRenderedTileType(renderedTileType);
-            minesweeperTileEntity.update();
+            ongoingGame.onTileClick(player, minesweeperTileEntity);
         }
     }
 
