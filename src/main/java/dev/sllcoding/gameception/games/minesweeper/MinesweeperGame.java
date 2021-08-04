@@ -44,7 +44,7 @@ public class MinesweeperGame extends SingleplayerGameBase {
 
         if (abstractTileEntity instanceof MinesweeperTileEntity minesweeperTileEntity) {
             checkCondition(new PlayerWonEndingCondition());
-            checkCondition(new MineEndingCondition(minesweeperTileEntity.getMineSweeperTileType()));
+            checkCondition(new MineEndingCondition(minesweeperTileEntity));
         }
     }
 
