@@ -43,8 +43,8 @@ public class MinesweeperGame extends SingleplayerGameBase {
         // probably use small numbers for states (like shorts)
 
         if (abstractTileEntity instanceof MinesweeperTileEntity minesweeperTileEntity) {
-            checkCondition(new MineEndingCondition(minesweeperTileEntity.getMineSweeperTileType()));
             checkCondition(new PlayerWonEndingCondition());
+            checkCondition(new MineEndingCondition(minesweeperTileEntity.getMineSweeperTileType()));
         }
     }
 
